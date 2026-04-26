@@ -101,7 +101,7 @@ textarea::placeholder { color: var(–text-muted); }
   <div class="header">
     <div class="logo">· Residere ·</div>
     <h1>Avaliação <em>Pós-Evento</em></h1>
-    <p class="subtitle">Central Imob Experience · Abril 2025</p>
+    <p class="subtitle">Central Imob Experience · Abril 2026</p>
   </div>
 
   <!-- INTRO -->
@@ -127,7 +127,7 @@ textarea::placeholder { color: var(–text-muted); }
       <p style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:600">Seu nome</p>
       <input type="text" id="campo-nome" autocomplete="name" placeholder="Como você se chama?" oninput="onNome()" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.3);color:var(--white);font-family:'Playfair Display',serif;font-size:24px;font-weight:400;padding:6px 0 14px;outline:none;transition:border-color 0.3s;">
     </div>
-    <div id="grupo-section" style="opacity:0;pointer-events:none;transition:opacity 0.4s,transform 0.4s;transform:translateY(8px);">
+    <div id="grupo-section" style="display:none;">
       <p class="group-label">Selecione seu grupo para começar</p>
     <div class="group-grid">
       <div class="gcard" id="gc1">
@@ -142,7 +142,7 @@ textarea::placeholder { color: var(–text-muted); }
       </div>
     </div>
     </div><!-- /grupo-section -->
-    <div id="btn-section" style="opacity:0;pointer-events:none;transition:opacity 0.4s;display:flex;justify-content:flex-end;margin-top:28px;padding-top:28px;border-top:1px solid var(--border);">
+    <div id="btn-section" style="display:none;justify-content:flex-end;margin-top:28px;padding-top:28px;border-top:1px solid var(--border);">
       <button class="btn btn-pri" id="btn-start">Iniciar pesquisa →</button>
     </div>
   </div>
@@ -448,18 +448,12 @@ var grp = document.getElementById(‘grupo-section’);
 var btn = document.getElementById(‘btn-section’);
 if (v.length >= 2) {
 inp.style.borderBottomColor = ‘var(–gold)’;
-grp.style.opacity = ‘1’;
-grp.style.pointerEvents = ‘auto’;
-grp.style.transform = ‘translateY(0)’;
-btn.style.opacity = ‘1’;
-btn.style.pointerEvents = ‘auto’;
+grp.style.display = ‘block’;
+btn.style.display = ‘flex’;
 } else {
 inp.style.borderBottomColor = ‘rgba(201,169,110,0.3)’;
-grp.style.opacity = ‘0’;
-grp.style.pointerEvents = ‘none’;
-grp.style.transform = ‘translateY(8px)’;
-btn.style.opacity = ‘0’;
-btn.style.pointerEvents = ‘none’;
+grp.style.display = ‘none’;
+btn.style.display = ‘none’;
 }
 }
 
