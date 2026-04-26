@@ -123,18 +123,11 @@ textarea::placeholder { color: var(–text-muted); }
         <div class="scale-item"><b>10★</b>Nível referência</div>
       </div>
     </div>
-    <div style="margin-bottom:36px">
-      <div style="position:relative">
-        <input type="text" id="campo-nome" autocomplete="name" placeholder=" " style="width:100%;background:var(--dark-2);border:1px solid var(--border);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;padding:20px 16px 8px;outline:none;transition:border-color 0.25s;" oninput="validateNome()" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor=this.value.trim()?'var(--gold)':'var(--border)'">
-        <label for="campo-nome" style="position:absolute;left:16px;top:14px;font-size:14px;color:var(--text-muted);pointer-events:none;transition:all 0.2s;transform-origin:left;font-family:'DM Sans',sans-serif;" id="nome-label">Seu nome completo</label>
-        <span id="nome-check" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:16px;opacity:0;transition:opacity 0.2s">✓</span>
-      </div>
-      <p id="nome-erro" style="font-size:12px;color:#e07070;margin-top:6px;padding-left:4px;opacity:0;transition:opacity 0.2s">Por favor, informe seu nome para continuar.</p>
+    <div style="margin-bottom:40px;border-bottom:1px solid var(--border);padding-bottom:32px">
+      <p style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:600">Seu nome</p>
+      <input type="text" id="campo-nome" autocomplete="name" placeholder="Como você se chama?" oninput="onNome()" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.3);color:var(--white);font-family:'Playfair Display',serif;font-size:24px;font-weight:400;padding:6px 0 14px;outline:none;transition:border-color 0.3s;">
     </div>
-    <style>
-      #campo-nome:focus ~ label, #campo-nome:not(:placeholder-shown) ~ label { top:6px; font-size:10px; color:var(--gold); letter-spacing:0.5px; text-transform:uppercase; }
-      #campo-nome:not(:placeholder-shown) + #nome-label { top:6px; font-size:10px; color:var(--gold); letter-spacing:0.5px; text-transform:uppercase; }
-    </style>
+    <div id="grupo-section" style="opacity:0;pointer-events:none;transition:opacity 0.4s;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s;">
     <p class="group-label">Selecione seu grupo para começar</p>
     <div class="group-grid">
       <div class="gcard" id="gc1">
@@ -148,7 +141,8 @@ textarea::placeholder { color: var(–text-muted); }
         <div class="gdesc">Acompanhei online, internamente ou por comentários</div>
       </div>
     </div>
-    <div class="navrow" style="justify-content:flex-end">
+    </div>
+    <div id="btn-section" style="opacity:0;pointer-events:none;transition:opacity 0.4s;" class="navrow" style="justify-content:flex-end">
       <button class="btn btn-pri" id="btn-start">Iniciar pesquisa →</button>
     </div>
   </div>
@@ -445,6 +439,28 @@ function pickGroup(g) {
 grupo = g;
 document.getElementById(‘gc1’).classList.toggle(‘sel’, g === 1);
 document.getElementById(‘gc2’).classList.toggle(‘sel’, g === 2);
+}
+
+function onNome() {
+var v = document.getElementById(‘campo-nome’).value.trim();
+var inp = document.getElementById(‘campo-nome’);
+var grp = document.getElementById(‘grupo-section’);
+var btn = document.getElementById(‘btn-section’);
+if (v.length >= 2) {
+inp.style.borderColor = ‘var(–gold)’;
+grp.style.opacity = ‘1’;
+grp.style.pointerEvents = ‘auto’;
+grp.style.transform = ‘translateY(0)’;
+btn.style.opacity = ‘1’;
+btn.style.pointerEvents = ‘auto’;
+} else {
+inp.style.borderColor = ‘rgba(201,169,110,0.3)’;
+grp.style.opacity = ‘0’;
+grp.style.pointerEvents = ‘none’;
+grp.style.transform = ‘translateY(8px)’;
+btn.style.opacity = ‘0’;
+btn.style.pointerEvents = ‘none’;
+}
 }
 
 function validateNome() {
