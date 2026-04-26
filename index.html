@@ -106,7 +106,7 @@ textarea::placeholder{color:var(--muted)}
     <input id="campo-nome" type="text" autocomplete="name" placeholder="Como você se chama?">
   </div>
 
-  <div id="bloco-grupo" style="display:none">
+  <div id="bloco-grupo" style="visibility:hidden;height:0;overflow:hidden">
     <p class="glbl">Selecione seu grupo para começar</p>
     <div class="ggrid">
       <div class="gc" id="gc1"><div class="ico">🏛️</div><div class="gt">Grupo 1</div><div class="gd">Estive presencialmente no evento</div></div>
@@ -314,7 +314,16 @@ document.getElementById(‘prog’).style.width=(idx<0?0:(idx+1)/list.length*100
 
 function checkNome(){
 var v=document.getElementById(‘campo-nome’).value.trim();
-document.getElementById(‘bloco-grupo’).style.display=v.length>=2?‘block’:‘none’;
+var bg=document.getElementById(‘bloco-grupo’);
+if(v.length>=2){
+bg.style.visibility=‘visible’;
+bg.style.height=‘auto’;
+bg.style.overflow=‘visible’;
+} else {
+bg.style.visibility=‘hidden’;
+bg.style.height=‘0’;
+bg.style.overflow=‘hidden’;
+}
 }
 
 function init(){
