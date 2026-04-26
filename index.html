@@ -35,13 +35,20 @@ h1 em { color: var(--gold); font-style: normal; }
 .scale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
 .scale-item { font-size: 11px; color: var(--text-muted); display: flex; gap: 6px; }
 .scale-item b { color: var(--gold); min-width: 22px; }
+/* NOME */
+.nome-wrap { margin-bottom: 36px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+.nome-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 10px; }
+.nome-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(201,169,110,0.3); color: var(--white); font-family: 'Playfair Display', serif; font-size: 24px; padding: 6px 0 14px; outline: none; transition: border-color 0.3s; -webkit-appearance: none; }
+.nome-input:focus { border-bottom-color: var(--gold); }
+/* GROUP */
 .group-label { font-family: 'Playfair Display', serif; font-size: 15px; text-align: center; margin-bottom: 20px; color: var(--white-dim); }
 .group-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
-.gcard { background: var(--dark-2); border: 2px solid var(--border); border-radius: 12px; padding: 24px 16px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; user-select: none; }
+.gcard { background: var(--dark-2); border: 2px solid var(--border); border-radius: 12px; padding: 24px 16px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; user-select: none; -webkit-tap-highlight-color: transparent; }
 .gcard.sel { border-color: var(--gold); background: rgba(201,169,110,0.07); }
 .gcard .ico { font-size: 28px; margin-bottom: 10px; }
 .gcard .gtitle { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
 .gcard .gdesc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+/* SECTIONS */
 .section { margin-bottom: 36px; }
 .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
 .sec-num { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gold); flex-shrink: 0; }
@@ -49,50 +56,43 @@ h1 em { color: var(--gold); font-style: normal; }
 .qbox { background: var(--dark-2); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
 .qlabel { font-size: 13px; font-weight: 500; line-height: 1.6; margin-bottom: 14px; }
 .qlabel b { color: var(--gold); margin-right: 3px; }
-
-/* STARS */
 .star-row { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
-.star { font-size: 26px; cursor: pointer; color: #333; transition: color 0.1s; user-select: none; line-height: 1; padding: 2px; }
-.star.on { color: var(–gold); }
-.star-val { font-size: 12px; color: var(–text-muted); margin-left: 8px; min-width: 30px; }
-.na-lnk { font-size: 11px; color: var(–text-muted); cursor: pointer; text-decoration: underline; margin-left: 6px; }
-.na-lnk.sel { color: var(–white); }
-
-/* OPTIONS */
+.star { font-size: 26px; cursor: pointer; color: #333; transition: color 0.1s; user-select: none; line-height: 1; padding: 2px; -webkit-tap-highlight-color: transparent; }
+.star.on { color: var(--gold); }
+.star-val { font-size: 12px; color: var(--text-muted); margin-left: 8px; min-width: 30px; }
+.na-lnk { font-size: 11px; color: var(--text-muted); cursor: pointer; text-decoration: underline; margin-left: 6px; }
+.na-lnk.sel { color: var(--white); }
 .opts { display: flex; flex-direction: column; gap: 7px; }
-.opt { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(–border); background: var(–dark-3); cursor: pointer; user-select: none; transition: border-color 0.15s, background 0.15s; }
-.opt.sel { border-color: var(–gold); background: rgba(201,169,110,0.08); }
-.opt .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(–text-muted); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s; }
-.opt.sel .dot { border-color: var(–gold); background: var(–gold); }
-.opt .ck { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(–text-muted); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; transition: border-color 0.15s; }
-.opt.sel .ck { border-color: var(–gold); background: var(–gold); color: var(–dark); }
-.opt span { font-size: 13px; color: var(–white-dim); }
-.opt.sel span { color: var(–white); }
-.hint { font-size: 11px; color: var(–text-muted); font-style: italic; margin-bottom: 8px; }
-
-textarea { width: 100%; background: var(–dark-3); border: 1px solid var(–border); border-radius: 8px; color: var(–white); font-family: ‘DM Sans’, sans-serif; font-size: 13px; line-height: 1.7; padding: 12px 14px; resize: vertical; min-height: 90px; outline: none; transition: border-color 0.2s; }
-textarea:focus { border-color: var(–gold); }
-textarea::placeholder { color: var(–text-muted); }
-
-.badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; background: rgba(201,169,110,0.1); border: 1px solid var(–border); font-size: 11px; color: var(–gold); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 28px; }
-.navrow { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(–border); }
-.btn { display: inline-flex; align-items: center; padding: 12px 26px; border-radius: 8px; font-family: ‘DM Sans’, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; }
-.btn-sec { background: transparent; border: 1px solid var(–border); color: var(–white-dim); }
-.btn-pri { background: var(–gold); color: var(–dark); }
-.btn-pri:hover { background: var(–gold-light); }
-.btn-sub { background: var(–gold); color: var(–dark); padding: 13px 32px; }
+.opt { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--dark-3); cursor: pointer; user-select: none; transition: border-color 0.15s, background 0.15s; -webkit-tap-highlight-color: transparent; }
+.opt.sel { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+.opt .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--text-muted); flex-shrink: 0; transition: border-color 0.15s; }
+.opt.sel .dot { border-color: var(--gold); background: var(--gold); }
+.opt .ck { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--text-muted); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+.opt.sel .ck { border-color: var(--gold); background: var(--gold); color: var(--dark); }
+.opt span { font-size: 13px; color: var(--white-dim); }
+.opt.sel span { color: var(--white); }
+.hint { font-size: 11px; color: var(--text-muted); font-style: italic; margin-bottom: 8px; }
+textarea { width: 100%; background: var(--dark-3); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.7; padding: 12px 14px; resize: vertical; min-height: 90px; outline: none; transition: border-color 0.2s; }
+textarea:focus { border-color: var(--gold); }
+textarea::placeholder { color: var(--text-muted); }
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; background: rgba(201,169,110,0.1); border: 1px solid var(--border); font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 28px; }
+.navrow { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+.btn { display: inline-flex; align-items: center; padding: 12px 26px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; -webkit-tap-highlight-color: transparent; }
+.btn-sec { background: transparent; border: 1px solid var(--border); color: var(--white-dim); }
+.btn-pri { background: var(--gold); color: var(--dark); }
+.btn-pri:hover { background: var(--gold-light); }
+.btn-sub { background: var(--gold); color: var(--dark); padding: 13px 32px; }
 .btn-sub:disabled { opacity: 0.5; }
-.prog { position: fixed; top: 0; left: 0; height: 3px; background: var(–gold); transition: width 0.3s; z-index: 100; }
+.prog { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); transition: width 0.3s; z-index: 100; }
 .screen { display: none; }
 .screen.active { display: block; animation: fi 0.35s ease; }
 @keyframes fi { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 .success { text-align: center; padding: 80px 20px; }
-.s-icon { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(–success); background: rgba(109,191,138,0.1); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 24px; }
-.s-title { font-family: ‘Playfair Display’, serif; font-size: 30px; font-weight: 900; margin-bottom: 10px; }
-.s-sub { font-size: 14px; color: var(–text-muted); line-height: 1.7; max-width: 380px; margin: 0 auto; }
+.s-icon { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--success); background: rgba(109,191,138,0.1); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 24px; }
+.s-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; margin-bottom: 10px; }
+.s-sub { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 380px; margin: 0 auto; }
 @media(max-width:500px) { .group-grid { grid-template-columns: 1fr; } .star { font-size: 22px; } }
 </style>
-
 </head>
 <body>
 <div class="prog" id="prog" style="width:0%"></div>
@@ -123,28 +123,35 @@ textarea::placeholder { color: var(–text-muted); }
         <div class="scale-item"><b>10★</b>Nível referência</div>
       </div>
     </div>
-    <div style="margin-bottom:40px;border-bottom:1px solid var(--border);padding-bottom:32px">
-      <p style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:600">Seu nome</p>
-      <input type="text" id="campo-nome" autocomplete="name" placeholder="Como você se chama?" oninput="onNome()" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.3);color:var(--white);font-family:'Playfair Display',serif;font-size:24px;font-weight:400;padding:6px 0 14px;outline:none;transition:border-color 0.3s;">
+
+```
+<!-- NOME -->
+<div class="nome-wrap">
+  <span class="nome-label">Seu nome</span>
+  <input class="nome-input" id="campo-nome" type="text" autocomplete="name" placeholder="Como você se chama?">
+</div>
+
+<!-- GRUPO — oculto até nome preenchido -->
+<div id="bloco-grupo" style="display:none">
+  <p class="group-label">Selecione seu grupo para começar</p>
+  <div class="group-grid">
+    <div class="gcard" id="gc1">
+      <div class="ico">🏛️</div>
+      <div class="gtitle">Grupo 1</div>
+      <div class="gdesc">Estive presencialmente no evento</div>
     </div>
-    <div id="grupo-section" style="display:none;">
-      <p class="group-label">Selecione seu grupo para começar</p>
-    <div class="group-grid">
-      <div class="gcard" id="gc1">
-        <div class="ico">🏛️</div>
-        <div class="gtitle">Grupo 1</div>
-        <div class="gdesc">Estive presencialmente no evento</div>
-      </div>
-      <div class="gcard" id="gc2">
-        <div class="ico">📱</div>
-        <div class="gtitle">Grupo 2</div>
-        <div class="gdesc">Acompanhei online, internamente ou por comentários</div>
-      </div>
+    <div class="gcard" id="gc2">
+      <div class="ico">📱</div>
+      <div class="gtitle">Grupo 2</div>
+      <div class="gdesc">Acompanhei online, internamente ou por comentários</div>
     </div>
-    </div><!-- /grupo-section -->
-    <div id="btn-section" style="display:none;justify-content:flex-end;margin-top:28px;padding-top:28px;border-top:1px solid var(--border);">
-      <button class="btn btn-pri" id="btn-start">Iniciar pesquisa →</button>
-    </div>
+  </div>
+  <div class="navrow" style="justify-content:flex-end">
+    <button class="btn btn-pri" id="btn-start">Iniciar pesquisa →</button>
+  </div>
+</div>
+```
+
   </div>
 
   <!-- G1 T1 -->
@@ -269,7 +276,7 @@ textarea::placeholder { color: var(–text-muted); }
       <div class="s-icon">✓</div>
       <div class="s-title">Obrigado!</div>
       <p class="s-sub">Sua avaliação foi registrada com sucesso. Ela será analisada pela liderança da Residere para aprimorar as próximas participações em eventos.</p>
-      <p style="margin-top:20px;font-size:11px;color:var(--text-muted)">Central Imob Experience · Residere © 2025</p>
+      <p style="margin-top:20px;font-size:11px;color:var(--text-muted)">Central Imob Experience · Residere © 2026</p>
     </div>
   </div>
 
@@ -417,6 +424,8 @@ Object.keys(RADIO_DEFS).forEach(function(qk) { buildRadio(qk, qk); });
 Object.keys(MULTI_DEFS).forEach(function(qk) { buildMulti(qk, qk); });
 Object.keys(STAR_DEFS).forEach(function(cid) { buildStars(cid, STAR_DEFS[cid]); });
 
+document.getElementById(‘campo-nome’).addEventListener(‘input’, onNome);
+document.getElementById(‘campo-nome’).addEventListener(‘keyup’, onNome);
 document.getElementById(‘gc1’).addEventListener(‘click’, function() { pickGroup(1); });
 document.getElementById(‘gc2’).addEventListener(‘click’, function() { pickGroup(2); });
 document.getElementById(‘btn-start’).addEventListener(‘click’, startForm);
@@ -443,18 +452,7 @@ document.getElementById(‘gc2’).classList.toggle(‘sel’, g === 2);
 
 function onNome() {
 var v = document.getElementById(‘campo-nome’).value.trim();
-var inp = document.getElementById(‘campo-nome’);
-var grp = document.getElementById(‘grupo-section’);
-var btn = document.getElementById(‘btn-section’);
-if (v.length >= 2) {
-inp.style.borderBottomColor = ‘var(–gold)’;
-grp.style.display = ‘block’;
-btn.style.display = ‘flex’;
-} else {
-inp.style.borderBottomColor = ‘rgba(201,169,110,0.3)’;
-grp.style.display = ‘none’;
-btn.style.display = ‘none’;
-}
+document.getElementById(‘bloco-grupo’).style.display = v.length >= 2 ? ‘block’ : ‘none’;
 }
 
 function validateNome() {
