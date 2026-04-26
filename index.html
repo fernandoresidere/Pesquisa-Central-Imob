@@ -7,504 +7,348 @@
 <title>Avaliação Pós-Evento — Residere</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --gold: #C9A96E;
-  --gold-light: #E8D5B0;
-  --dark: #0E0E0E;
-  --dark-2: #1A1A1A;
-  --dark-3: #242424;
-  --dark-4: #2E2E2E;
-  --white: #F5F2ED;
-  --white-dim: rgba(245,242,237,0.6);
-  --text-muted: #888;
-  --border: rgba(201,169,110,0.2);
-  --border-hover: rgba(201,169,110,0.5);
-  --success: #6DBF8A;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--dark); color: var(--white); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
-.container { max-width: 740px; margin: 0 auto; padding: 0 20px 80px; }
-.header { padding: 48px 0 36px; text-align: center; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-.logo { font-family: 'Playfair Display', serif; font-size: 12px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-h1 { font-family: 'Playfair Display', serif; font-size: clamp(26px,5vw,40px); font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
-h1 em { color: var(--gold); font-style: normal; }
-.subtitle { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
-.intro-box { background: var(--dark-2); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin-bottom: 36px; }
-.intro-box p { font-size: 13px; color: var(--white-dim); line-height: 1.8; margin-bottom: 12px; }
-.intro-box p:last-child { margin-bottom: 0; }
-.scale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
-.scale-item { font-size: 11px; color: var(--text-muted); display: flex; gap: 6px; }
-.scale-item b { color: var(--gold); min-width: 22px; }
-/* NOME */
-.nome-wrap { margin-bottom: 36px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
-.nome-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 10px; }
-.nome-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(201,169,110,0.3); color: var(--white); font-family: 'Playfair Display', serif; font-size: 24px; padding: 6px 0 14px; outline: none; transition: border-color 0.3s; -webkit-appearance: none; }
-.nome-input:focus { border-bottom-color: var(--gold); }
-/* GROUP */
-.group-label { font-family: 'Playfair Display', serif; font-size: 15px; text-align: center; margin-bottom: 20px; color: var(--white-dim); }
-.group-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
-.gcard { background: var(--dark-2); border: 2px solid var(--border); border-radius: 12px; padding: 24px 16px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; user-select: none; -webkit-tap-highlight-color: transparent; }
-.gcard.sel { border-color: var(--gold); background: rgba(201,169,110,0.07); }
-.gcard .ico { font-size: 28px; margin-bottom: 10px; }
-.gcard .gtitle { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-.gcard .gdesc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
-/* SECTIONS */
-.section { margin-bottom: 36px; }
-.sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-.sec-num { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--gold); flex-shrink: 0; }
-.sec-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; }
-.qbox { background: var(--dark-2); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
-.qlabel { font-size: 13px; font-weight: 500; line-height: 1.6; margin-bottom: 14px; }
-.qlabel b { color: var(--gold); margin-right: 3px; }
-.star-row { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
-.star { font-size: 26px; cursor: pointer; color: #333; transition: color 0.1s; user-select: none; line-height: 1; padding: 2px; -webkit-tap-highlight-color: transparent; }
-.star.on { color: var(--gold); }
-.star-val { font-size: 12px; color: var(--text-muted); margin-left: 8px; min-width: 30px; }
-.na-lnk { font-size: 11px; color: var(--text-muted); cursor: pointer; text-decoration: underline; margin-left: 6px; }
-.na-lnk.sel { color: var(--white); }
-.opts { display: flex; flex-direction: column; gap: 7px; }
-.opt { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--dark-3); cursor: pointer; user-select: none; transition: border-color 0.15s, background 0.15s; -webkit-tap-highlight-color: transparent; }
-.opt.sel { border-color: var(--gold); background: rgba(201,169,110,0.08); }
-.opt .dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--text-muted); flex-shrink: 0; transition: border-color 0.15s; }
-.opt.sel .dot { border-color: var(--gold); background: var(--gold); }
-.opt .ck { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--text-muted); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; }
-.opt.sel .ck { border-color: var(--gold); background: var(--gold); color: var(--dark); }
-.opt span { font-size: 13px; color: var(--white-dim); }
-.opt.sel span { color: var(--white); }
-.hint { font-size: 11px; color: var(--text-muted); font-style: italic; margin-bottom: 8px; }
-textarea { width: 100%; background: var(--dark-3); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.7; padding: 12px 14px; resize: vertical; min-height: 90px; outline: none; transition: border-color 0.2s; }
-textarea:focus { border-color: var(--gold); }
-textarea::placeholder { color: var(--text-muted); }
-.badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; background: rgba(201,169,110,0.1); border: 1px solid var(--border); font-size: 11px; color: var(--gold); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 28px; }
-.navrow { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
-.btn { display: inline-flex; align-items: center; padding: 12px 26px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; -webkit-tap-highlight-color: transparent; }
-.btn-sec { background: transparent; border: 1px solid var(--border); color: var(--white-dim); }
-.btn-pri { background: var(--gold); color: var(--dark); }
-.btn-pri:hover { background: var(--gold-light); }
-.btn-sub { background: var(--gold); color: var(--dark); padding: 13px 32px; }
-.btn-sub:disabled { opacity: 0.5; }
-.prog { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); transition: width 0.3s; z-index: 100; }
-.screen { display: none; }
-.screen.active { display: block; animation: fi 0.35s ease; }
-@keyframes fi { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
-.success { text-align: center; padding: 80px 20px; }
-.s-icon { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--success); background: rgba(109,191,138,0.1); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 24px; }
-.s-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; margin-bottom: 10px; }
-.s-sub { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 380px; margin: 0 auto; }
-@media(max-width:500px) { .group-grid { grid-template-columns: 1fr; } .star { font-size: 22px; } }
+:root{--gold:#C9A96E;--gold-light:#E8D5B0;--dark:#0E0E0E;--dark2:#1A1A1A;--dark3:#242424;--dark4:#2E2E2E;--white:#F5F2ED;--dim:rgba(245,242,237,0.6);--muted:#888;--border:rgba(201,169,110,0.2);--success:#6DBF8A}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--dark);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh}
+.wrap{max-width:740px;margin:0 auto;padding:0 20px 80px}
+.hdr{padding:48px 0 36px;text-align:center;border-bottom:1px solid var(--border);margin-bottom:40px}
+.logo{font-family:'Playfair Display',serif;font-size:12px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.2;margin-bottom:10px}
+h1 em{color:var(--gold);font-style:normal}
+.sub{font-size:13px;color:var(--muted);line-height:1.7}
+.ibox{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-bottom:36px}
+.ibox p{font-size:13px;color:var(--dim);line-height:1.8;margin-bottom:12px}
+.ibox p:last-child{margin-bottom:0}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.si{font-size:11px;color:var(--muted);display:flex;gap:6px}
+.si b{color:var(--gold);min-width:22px}
+.nome-wrap{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.nome-lbl{display:block;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+#campo-nome{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.3);color:var(--white);font-family:'Playfair Display',serif;font-size:24px;padding:6px 0 14px;outline:none}
+.glbl{font-family:'Playfair Display',serif;font-size:15px;text-align:center;margin-bottom:20px;color:var(--dim)}
+.ggrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px}
+.gc{background:var(--dark2);border:2px solid var(--border);border-radius:12px;padding:24px 16px;text-align:center;cursor:pointer;transition:border-color 0.2s,background 0.2s}
+.gc.sel{border-color:var(--gold);background:rgba(201,169,110,0.07)}
+.gc .ico{font-size:28px;margin-bottom:10px}
+.gc .gt{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;margin-bottom:4px}
+.gc .gd{font-size:11px;color:var(--muted);line-height:1.5}
+.sec{margin-bottom:36px}
+.sh{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.sn{width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--gold);flex-shrink:0}
+.st{font-family:'Playfair Display',serif;font-size:17px;font-weight:700}
+.qb{background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.ql{font-size:13px;font-weight:500;line-height:1.6;margin-bottom:14px}
+.ql b{color:var(--gold);margin-right:3px}
+.sr{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.star{font-size:26px;cursor:pointer;color:#333;transition:color 0.1s;user-select:none;line-height:1;padding:2px}
+.star.on{color:var(--gold)}
+.sv{font-size:12px;color:var(--muted);margin-left:8px;min-width:30px}
+.na{font-size:11px;color:var(--muted);cursor:pointer;text-decoration:underline;margin-left:6px}
+.na.sel{color:var(--white)}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--dark3);cursor:pointer;user-select:none;transition:border-color 0.15s,background 0.15s}
+.opt.sel{border-color:var(--gold);background:rgba(201,169,110,0.08)}
+.dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--muted);flex-shrink:0;transition:border-color 0.15s}
+.opt.sel .dot{border-color:var(--gold);background:var(--gold)}
+.ck{width:16px;height:16px;border-radius:4px;border:2px solid var(--muted);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px}
+.opt.sel .ck{border-color:var(--gold);background:var(--gold);color:var(--dark)}
+.opt span{font-size:13px;color:var(--dim)}
+.opt.sel span{color:var(--white)}
+.hint{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:8px}
+textarea{width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:8px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.7;padding:12px 14px;resize:vertical;min-height:90px;outline:none;transition:border-color 0.2s}
+textarea:focus{border-color:var(--gold)}
+textarea::placeholder{color:var(--muted)}
+.bdg{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:rgba(201,169,110,0.1);border:1px solid var(--border);font-size:11px;color:var(--gold);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:28px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:28px;border-top:1px solid var(--border)}
+.btn{display:inline-flex;align-items:center;padding:12px 26px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;border:none}
+.bsec{background:transparent;border:1px solid var(--border);color:var(--dim)}
+.bpri{background:var(--gold);color:var(--dark)}
+.bsub{background:var(--gold);color:var(--dark);padding:13px 32px}
+.bsub:disabled{opacity:0.5}
+.prog{position:fixed;top:0;left:0;height:3px;background:var(--gold);transition:width 0.3s;z-index:100}
+.scr{display:none}
+.scr.on{display:block;animation:fi 0.35s ease}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ok{text-align:center;padding:80px 20px}
+.ok-ico{width:72px;height:72px;border-radius:50%;border:2px solid var(--success);background:rgba(109,191,138,0.1);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 24px}
+.ok-t{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;margin-bottom:10px}
+.ok-s{font-size:14px;color:var(--muted);line-height:1.7;max-width:380px;margin:0 auto}
+@media(max-width:500px){.ggrid{grid-template-columns:1fr}.star{font-size:22px}}
 </style>
 </head>
 <body>
 <div class="prog" id="prog" style="width:0%"></div>
-<div class="container">
+<div class="wrap">
 
-  <div class="header">
-    <div class="logo">· Residere ·</div>
-    <h1>Avaliação <em>Pós-Evento</em></h1>
-    <p class="subtitle">Central Imob Experience · Abril 2026</p>
-  </div>
-
-  <!-- INTRO -->
-
-  <div class="screen active" id="s-intro">
-    <div class="intro-box">
-      <p>Este formulário avalia a participação da Residere no evento — preparação, estratégia, estande, pitch, tecnologia, comunicação online, captação e percepção de marca.</p>
-      <p>A intenção não é apontar culpados. É entender o que funcionou e o que ajustar para a próxima presença.</p>
-      <div class="scale-grid">
-        <div class="scale-item"><b>1★</b>Muito ruim</div>
-        <div class="scale-item"><b>2★</b>Ruim</div>
-        <div class="scale-item"><b>3★</b>Fraco</div>
-        <div class="scale-item"><b>4★</b>Abaixo do esperado</div>
-        <div class="scale-item"><b>5★</b>Regular</div>
-        <div class="scale-item"><b>6★</b>Aceitável</div>
-        <div class="scale-item"><b>7★</b>Bom</div>
-        <div class="scale-item"><b>8★</b>Muito bom</div>
-        <div class="scale-item"><b>9★</b>Excelente</div>
-        <div class="scale-item"><b>10★</b>Nível referência</div>
-      </div>
-    </div>
-
-```
-<!-- NOME -->
-<div class="nome-wrap">
-  <span class="nome-label">Seu nome</span>
-  <input class="nome-input" id="campo-nome" type="text" autocomplete="name" placeholder="Como você se chama?">
+<div class="hdr">
+  <div class="logo">· Residere ·</div>
+  <h1>Avaliação <em>Pós-Evento</em></h1>
+  <p class="sub">Central Imob Experience · Abril 2026</p>
 </div>
 
-<!-- GRUPO — oculto até nome preenchido -->
-<div id="bloco-grupo" style="display:none">
-  <p class="group-label">Selecione seu grupo para começar</p>
-  <div class="group-grid">
-    <div class="gcard" id="gc1">
-      <div class="ico">🏛️</div>
-      <div class="gtitle">Grupo 1</div>
-      <div class="gdesc">Estive presencialmente no evento</div>
-    </div>
-    <div class="gcard" id="gc2">
-      <div class="ico">📱</div>
-      <div class="gtitle">Grupo 2</div>
-      <div class="gdesc">Acompanhei online, internamente ou por comentários</div>
+<!-- INTRO -->
+
+<div class="scr on" id="s-intro">
+  <div class="ibox">
+    <p>Este formulário avalia a participação da Residere no evento — preparação, estratégia, estande, pitch, tecnologia, comunicação online, captação e percepção de marca.</p>
+    <p>A intenção não é apontar culpados. É entender o que funcionou e o que ajustar para a próxima presença.</p>
+    <div class="sgrid">
+      <div class="si"><b>1★</b>Muito ruim</div><div class="si"><b>2★</b>Ruim</div>
+      <div class="si"><b>3★</b>Fraco</div><div class="si"><b>4★</b>Abaixo do esperado</div>
+      <div class="si"><b>5★</b>Regular</div><div class="si"><b>6★</b>Aceitável</div>
+      <div class="si"><b>7★</b>Bom</div><div class="si"><b>8★</b>Muito bom</div>
+      <div class="si"><b>9★</b>Excelente</div><div class="si"><b>10★</b>Nível referência</div>
     </div>
   </div>
-  <div class="navrow" style="justify-content:flex-end">
-    <button class="btn btn-pri" id="btn-start">Iniciar pesquisa →</button>
+
+  <div class="nome-wrap">
+    <span class="nome-lbl">Seu nome</span>
+    <input id="campo-nome" type="text" autocomplete="name" placeholder="Como você se chama?">
+  </div>
+
+  <div id="bloco-grupo" style="display:none">
+    <p class="glbl">Selecione seu grupo para começar</p>
+    <div class="ggrid">
+      <div class="gc" id="gc1"><div class="ico">🏛️</div><div class="gt">Grupo 1</div><div class="gd">Estive presencialmente no evento</div></div>
+      <div class="gc" id="gc2"><div class="ico">📱</div><div class="gt">Grupo 2</div><div class="gd">Acompanhei online, internamente ou por comentários</div></div>
+    </div>
+    <div class="nav" style="justify-content:flex-end">
+      <button class="btn bpri" id="btn-start">Iniciar pesquisa →</button>
+    </div>
   </div>
 </div>
-```
 
+<!-- G1 T1 -->
+
+<div class="scr" id="s-g1-1">
+  <div class="bdg">🏛️ Grupo 1 · Presencial</div>
+  <div class="sec"><div class="sh"><div class="sn">1</div><div class="st">Identificação da atuação</div></div>
+    <div class="qb"><div class="ql"><b>Q2.</b>Qual foi sua principal atuação no evento?</div><div class="opts" id="q2"></div></div>
+    <div class="qb"><div class="ql"><b>Q3.</b>Em qual etapa você participou mais diretamente?</div><div class="opts" id="q3"></div></div>
   </div>
+  <div class="sec"><div class="sh"><div class="sn">2</div><div class="st">Preparação e alinhamento interno</div></div><div id="g1-prep"></div></div>
+  <div class="nav"><button class="btn bsec" onclick="go('s-intro')">← Voltar</button><button class="btn bpri" onclick="go('s-g1-2')">Continuar →</button></div>
+</div>
 
-  <!-- G1 T1 -->
+<!-- G1 T2 -->
 
-  <div class="screen" id="s-g1-1">
-    <div class="badge">🏛️ Grupo 1 · Presencial</div>
-    <div class="section">
-      <div class="sec-head"><div class="sec-num">1</div><div class="sec-title">Identificação da atuação</div></div>
-      <div class="qbox"><div class="qlabel"><b>Q2.</b>Qual foi sua principal atuação no evento?</div><div class="opts" id="q2"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q3.</b>Em qual etapa você participou mais diretamente?</div><div class="opts" id="q3"></div></div>
-    </div>
-    <div class="section">
-      <div class="sec-head"><div class="sec-num">2</div><div class="sec-title">Preparação e alinhamento interno</div></div>
-      <div id="g1-prep"></div>
-    </div>
-    <div class="navrow">
-      <button class="btn btn-sec" onclick="go('s-intro')">← Voltar</button>
-      <button class="btn btn-pri" onclick="go('s-g1-2')">Continuar →</button>
-    </div>
+<div class="scr" id="s-g1-2">
+  <div class="bdg">🏛️ Grupo 1 · Presencial</div>
+  <div class="sec"><div class="sh"><div class="sn">3</div><div class="st">Estratégia e posicionamento</div></div><div id="g1-strat"></div></div>
+  <div class="sec"><div class="sh"><div class="sn">4</div><div class="st">Estande, espaço físico e experiência visual</div></div><div id="g1-stand"></div></div>
+  <div class="sec"><div class="sh"><div class="sn">5</div><div class="st">Copinho, QR code, landing page e tecnologia</div></div><div id="g1-tech"></div></div>
+  <div class="nav"><button class="btn bsec" onclick="go('s-g1-1')">← Voltar</button><button class="btn bpri" onclick="go('s-g1-3')">Continuar →</button></div>
+</div>
+
+<!-- G1 T3 -->
+
+<div class="scr" id="s-g1-3">
+  <div class="bdg">🏛️ Grupo 1 · Presencial</div>
+  <div class="sec"><div class="sh"><div class="sn">6</div><div class="st">Pitch, abordagem comercial e relacionamento</div></div><div id="g1-pitch"></div></div>
+  <div class="sec"><div class="sh"><div class="sn">7</div><div class="st">Operação e coordenação presencial</div></div><div id="g1-ops"></div></div>
+  <div class="sec"><div class="sh"><div class="sn">8</div><div class="st">Captação e resultado presencial</div></div><div id="g1-res"></div></div>
+  <div class="nav"><button class="btn bsec" onclick="go('s-g1-2')">← Voltar</button><button class="btn bpri" onclick="go('s-g1-4')">Continuar →</button></div>
+</div>
+
+<!-- G1 T4 -->
+
+<div class="scr" id="s-g1-4">
+  <div class="bdg">🏛️ Grupo 1 · Presencial</div>
+  <div class="sec"><div class="sh"><div class="sn">9</div><div class="st">Pontos de melhoria presencial</div></div>
+    <div class="qb"><div class="ql"><b>Q49.</b>Quais foram os 3 pontos que mais precisam melhorar?</div><div class="hint">Selecione até 3 opções</div><div class="opts" id="q49"></div></div>
+    <div class="qb"><div class="ql"><b>Q50.</b>Qual ponto mais precisa ser mantido nos próximos eventos?</div><div class="opts" id="q50"></div></div>
+    <div class="qb"><div class="ql"><b>Q51.</b>Qual foi o principal gargalo percebido presencialmente?</div><div class="opts" id="q51"></div></div>
+    <div class="qb"><div class="ql"><b>Q52.</b>Qual é sua principal sugestão para melhorar a próxima participação?</div><textarea id="q52" placeholder="Descreva o problema percebido, o impacto e a melhoria sugerida..."></textarea></div>
   </div>
+  <div class="nav"><button class="btn bsec" onclick="go('s-g1-3')">← Voltar</button><button class="btn bsub" id="sub1">Enviar avaliação ✓</button></div>
+</div>
 
-  <!-- G1 T2 -->
+<!-- G2 T1 -->
 
-  <div class="screen" id="s-g1-2">
-    <div class="badge">🏛️ Grupo 1 · Presencial</div>
-    <div class="section"><div class="sec-head"><div class="sec-num">3</div><div class="sec-title">Estratégia e posicionamento</div></div><div id="g1-strat"></div></div>
-    <div class="section"><div class="sec-head"><div class="sec-num">4</div><div class="sec-title">Estande, espaço físico e experiência visual</div></div><div id="g1-stand"></div></div>
-    <div class="section"><div class="sec-head"><div class="sec-num">5</div><div class="sec-title">Copinho, QR code, landing page e tecnologia</div></div><div id="g1-tech"></div></div>
-    <div class="navrow">
-      <button class="btn btn-sec" onclick="go('s-g1-1')">← Voltar</button>
-      <button class="btn btn-pri" onclick="go('s-g1-3')">Continuar →</button>
-    </div>
+<div class="scr" id="s-g2-1">
+  <div class="bdg">📱 Grupo 2 · Online / Interno</div>
+  <div class="sec"><div class="sh"><div class="sn">1</div><div class="st">Como você acompanhou</div></div>
+    <div class="qb"><div class="ql"><b>Q53.</b>Como você acompanhou a presença da Residere no evento?</div><div class="hint">Pode selecionar mais de uma opção</div><div class="opts" id="q53"></div></div>
+    <div class="qb"><div class="ql"><b>Q54.</b>Qual foi seu nível de contato com os materiais do evento?</div><div class="opts" id="q54"></div></div>
   </div>
+  <div class="sec"><div class="sh"><div class="sn">2</div><div class="st">Clareza da presença online</div></div><div id="g2-clar"></div></div>
+  <div class="sec"><div class="sh"><div class="sn">3</div><div class="st">Percepção de marca pela comunicação online</div></div><div id="g2-brand"></div></div>
+  <div class="nav"><button class="btn bsec" onclick="go('s-intro')">← Voltar</button><button class="btn bpri" onclick="go('s-g2-2')">Continuar →</button></div>
+</div>
 
-  <!-- G1 T3 -->
+<!-- G2 T2 -->
 
-  <div class="screen" id="s-g1-3">
-    <div class="badge">🏛️ Grupo 1 · Presencial</div>
-    <div class="section"><div class="sec-head"><div class="sec-num">6</div><div class="sec-title">Pitch, abordagem comercial e relacionamento</div></div><div id="g1-pitch"></div></div>
-    <div class="section"><div class="sec-head"><div class="sec-num">7</div><div class="sec-title">Operação e coordenação presencial</div></div><div id="g1-ops"></div></div>
-    <div class="section"><div class="sec-head"><div class="sec-num">8</div><div class="sec-title">Captação e resultado presencial</div></div><div id="g1-res"></div></div>
-    <div class="navrow">
-      <button class="btn btn-sec" onclick="go('s-g1-2')">← Voltar</button>
-      <button class="btn btn-pri" onclick="go('s-g1-4')">Continuar →</button>
-    </div>
+<div class="scr" id="s-g2-2">
+  <div class="bdg">📱 Grupo 2 · Online / Interno</div>
+  <div class="sec"><div class="sh"><div class="sn">4</div><div class="st">Qualidade dos conteúdos publicados</div></div><div id="g2-cont"></div></div>
+  <div class="sec"><div class="sh"><div class="sn">5</div><div class="st">Percepção comercial e institucional online</div></div><div id="g2-comm"></div></div>
+  <div class="sec"><div class="sh"><div class="sn">6</div><div class="st">Comparação com outros players</div></div>
+    <div class="qb"><div class="ql"><b>Q75.</b>Na sua percepção online, a Residere apareceu como:</div><div class="opts" id="q75"></div></div>
+    <div class="qb"><div class="ql"><b>Q76.</b>Comparando com outros players online, a Residere parecia:</div><div class="opts" id="q76"></div></div>
+    <div class="qb"><div class="ql"><b>Q77.</b>O que mais influenciou sua percepção sobre a presença da Residere?</div><div class="opts" id="q77"></div></div>
   </div>
+  <div class="nav"><button class="btn bsec" onclick="go('s-g2-1')">← Voltar</button><button class="btn bpri" onclick="go('s-g2-3')">Continuar →</button></div>
+</div>
 
-  <!-- G1 T4 -->
+<!-- G2 T3 -->
 
-  <div class="screen" id="s-g1-4">
-    <div class="badge">🏛️ Grupo 1 · Presencial</div>
-    <div class="section">
-      <div class="sec-head"><div class="sec-num">9</div><div class="sec-title">Pontos de melhoria presencial</div></div>
-      <div class="qbox"><div class="qlabel"><b>Q49.</b>Quais foram os 3 pontos que mais precisam melhorar?</div><div class="hint">Selecione até 3 opções</div><div class="opts" id="q49"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q50.</b>Qual ponto mais precisa ser mantido nos próximos eventos?</div><div class="opts" id="q50"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q51.</b>Qual foi o principal gargalo percebido presencialmente?</div><div class="opts" id="q51"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q52.</b>Qual é sua principal sugestão para melhorar a próxima participação?</div><textarea id="q52" placeholder="Descreva o problema percebido, o impacto e a melhoria sugerida..."></textarea></div>
-    </div>
-    <div class="navrow">
-      <button class="btn btn-sec" onclick="go('s-g1-3')">← Voltar</button>
-      <button class="btn btn-sub" id="sub1">Enviar avaliação ✓</button>
-    </div>
+<div class="scr" id="s-g2-3">
+  <div class="bdg">📱 Grupo 2 · Online / Interno</div>
+  <div class="sec"><div class="sh"><div class="sn">7</div><div class="st">Pontos de melhoria online</div></div>
+    <div class="qb"><div class="ql"><b>Q78.</b>Qual foi o principal ponto fraco da comunicação online?</div><div class="opts" id="q78"></div></div>
+    <div class="qb"><div class="ql"><b>Q79.</b>Quais 3 pontos mais precisam melhorar na comunicação online?</div><div class="hint">Selecione até 3 opções</div><div class="opts" id="q79"></div></div>
+    <div class="qb"><div class="ql"><b>Q80.</b>Qual ponto da comunicação online deve ser mantido?</div><div class="opts" id="q80"></div></div>
   </div>
+  <div class="sec"><div class="sh"><div class="sn">8</div><div class="st">Resultado percebido online</div></div><div id="g2-res"></div></div>
+  <div class="qb"><div class="ql"><b>Q86.</b>Qual é sua principal sugestão para melhorar a comunicação online da Residere em eventos?</div><textarea id="q86" placeholder="Descreva o problema percebido, o impacto e a melhoria sugerida..."></textarea></div>
+  <div class="nav"><button class="btn bsec" onclick="go('s-g2-2')">← Voltar</button><button class="btn bsub" id="sub2">Enviar avaliação ✓</button></div>
+</div>
 
-  <!-- G2 T1 -->
+<!-- SUCESSO -->
 
-  <div class="screen" id="s-g2-1">
-    <div class="badge">📱 Grupo 2 · Online / Interno</div>
-    <div class="section">
-      <div class="sec-head"><div class="sec-num">1</div><div class="sec-title">Como você acompanhou</div></div>
-      <div class="qbox"><div class="qlabel"><b>Q53.</b>Como você acompanhou a presença da Residere no evento?</div><div class="hint">Pode selecionar mais de uma opção</div><div class="opts" id="q53"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q54.</b>Qual foi seu nível de contato com os materiais do evento?</div><div class="opts" id="q54"></div></div>
-    </div>
-    <div class="section"><div class="sec-head"><div class="sec-num">2</div><div class="sec-title">Clareza da presença online</div></div><div id="g2-clar"></div></div>
-    <div class="section"><div class="sec-head"><div class="sec-num">3</div><div class="sec-title">Percepção de marca pela comunicação online</div></div><div id="g2-brand"></div></div>
-    <div class="navrow">
-      <button class="btn btn-sec" onclick="go('s-intro')">← Voltar</button>
-      <button class="btn btn-pri" onclick="go('s-g2-2')">Continuar →</button>
-    </div>
+<div class="scr" id="s-ok">
+  <div class="ok">
+    <div class="ok-ico">✓</div>
+    <div class="ok-t">Obrigado!</div>
+    <p class="ok-s">Sua avaliação foi registrada com sucesso. Ela será analisada pela liderança da Residere para aprimorar as próximas participações em eventos.</p>
+    <p style="margin-top:20px;font-size:11px;color:var(--muted)">Central Imob Experience · Residere © 2026</p>
   </div>
-
-  <!-- G2 T2 -->
-
-  <div class="screen" id="s-g2-2">
-    <div class="badge">📱 Grupo 2 · Online / Interno</div>
-    <div class="section"><div class="sec-head"><div class="sec-num">4</div><div class="sec-title">Qualidade dos conteúdos publicados</div></div><div id="g2-cont"></div></div>
-    <div class="section"><div class="sec-head"><div class="sec-num">5</div><div class="sec-title">Percepção comercial e institucional online</div></div><div id="g2-comm"></div></div>
-    <div class="section">
-      <div class="sec-head"><div class="sec-num">6</div><div class="sec-title">Comparação com outros players</div></div>
-      <div class="qbox"><div class="qlabel"><b>Q75.</b>Na sua percepção online, a Residere apareceu como:</div><div class="opts" id="q75"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q76.</b>Comparando com outros players online, a Residere parecia:</div><div class="opts" id="q76"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q77.</b>O que mais influenciou sua percepção sobre a presença da Residere?</div><div class="opts" id="q77"></div></div>
-    </div>
-    <div class="navrow">
-      <button class="btn btn-sec" onclick="go('s-g2-1')">← Voltar</button>
-      <button class="btn btn-pri" onclick="go('s-g2-3')">Continuar →</button>
-    </div>
-  </div>
-
-  <!-- G2 T3 -->
-
-  <div class="screen" id="s-g2-3">
-    <div class="badge">📱 Grupo 2 · Online / Interno</div>
-    <div class="section">
-      <div class="sec-head"><div class="sec-num">7</div><div class="sec-title">Pontos de melhoria online</div></div>
-      <div class="qbox"><div class="qlabel"><b>Q78.</b>Qual foi o principal ponto fraco da comunicação online?</div><div class="opts" id="q78"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q79.</b>Quais 3 pontos mais precisam melhorar na comunicação online?</div><div class="hint">Selecione até 3 opções</div><div class="opts" id="q79"></div></div>
-      <div class="qbox"><div class="qlabel"><b>Q80.</b>Qual ponto da comunicação online deve ser mantido?</div><div class="opts" id="q80"></div></div>
-    </div>
-    <div class="section"><div class="sec-head"><div class="sec-num">8</div><div class="sec-title">Resultado percebido online</div></div><div id="g2-res"></div></div>
-    <div class="qbox"><div class="qlabel"><b>Q86.</b>Qual é sua principal sugestão para melhorar a comunicação online da Residere em eventos?</div><textarea id="q86" placeholder="Descreva o problema percebido, o impacto e a melhoria sugerida..."></textarea></div>
-    <div class="navrow">
-      <button class="btn btn-sec" onclick="go('s-g2-2')">← Voltar</button>
-      <button class="btn btn-sub" id="sub2">Enviar avaliação ✓</button>
-    </div>
-  </div>
-
-  <!-- SUCESSO -->
-
-  <div class="screen" id="s-ok">
-    <div class="success">
-      <div class="s-icon">✓</div>
-      <div class="s-title">Obrigado!</div>
-      <p class="s-sub">Sua avaliação foi registrada com sucesso. Ela será analisada pela liderança da Residere para aprimorar as próximas participações em eventos.</p>
-      <p style="margin-top:20px;font-size:11px;color:var(--text-muted)">Central Imob Experience · Residere © 2026</p>
-    </div>
-  </div>
+</div>
 
 </div>
 <script>
-var SHEET = 'https://script.google.com/macros/s/AKfycbyxxEGEWdutuZBkcON52sNUSTKNGNzyYjZ6HJYzGDtQ6IQ85we_01WEo5u-Cgh5TN4KXw/exec';
-var ans = {};
-var grupo = 0;
+var SHEET='https://script.google.com/macros/s/AKfycbyxxEGEWdutuZBkcON52sNUSTKNGNzyYjZ6HJYzGDtQ6IQ85we_01WEo5u-Cgh5TN4KXw/exec';
+var ans={},grupo=0;
 
-var RADIO_DEFS = {
-q2:  [‘Comercial’,‘Marketing’,‘TI / Sistemas’,‘Liderança / Coordenação’,‘Apoio operacional’,‘Relacionamento institucional’,‘Administrativo / Suporte’,‘Outro’],
-q3:  [‘Preparação antes do evento’,‘Montagem / estruturação’,‘Execução durante o evento’,‘Atendimento / abordagem ao público’,‘Captação / registro de contatos’,‘Pós-evento / follow-up’,‘Participei de mais de uma etapa’],
-q50: [‘Presença institucional forte’,‘Copinho / brinde com QR code’,‘Landing page específica’,‘Time comercial presente’,‘Apoio do marketing no evento’,‘Apoio da TI no evento’,‘Vídeos e telas’,‘Abordagem ativa com parceiros’,‘Padrão visual da marca’,‘Estratégia de relacionamento’,‘Captação digital de contatos’,‘Outro ponto’],
-q51: [‘Faltou preparação’,‘Faltou clareza de estratégia’,‘Faltou clareza de função’,‘Faltou treinamento de pitch’,‘Faltou integração entre áreas’,‘Faltou material visual’,‘Faltou melhor captação’,‘Faltou follow-up planejado’,‘Faltou melhor uso da tecnologia’,‘Faltou melhor operação no espaço’,‘Não percebi gargalo relevante’,‘Não consegui avaliar’],
-q54: [‘Vi bastante conteúdo e consegui formar opinião’,‘Vi alguns conteúdos e tenho percepção parcial’,‘Vi pouco conteúdo e tenho pouca base para avaliar’,‘Só ouvi comentários de terceiros’,‘Não tenho base suficiente para avaliar’],
-q75: [‘Marca protagonista e muito forte’,‘Marca forte e bem posicionada’,‘Marca presente, mas com espaço para aparecer mais’,‘Marca discreta demais’,‘Marca abaixo do potencial’,‘Não consegui avaliar’],
-q76: [‘Muito acima dos demais’,‘Acima da média’,‘Na média’,‘Abaixo do esperado’,‘Muito abaixo do potencial’,‘Não vi outros players o suficiente para comparar’,‘Não consegui avaliar’],
-q77: [‘Qualidade dos stories’,‘Quantidade de publicações’,‘Visual do estande’,‘Presença da equipe’,‘Copinho / QR code / brinde’,‘Landing page’,‘Vídeos e telas’,‘Comentários de colaboradores’,‘Comentários de parceiros ou corretores’,‘Publicações de terceiros’,‘Não vi conteúdo suficiente para formar opinião’],
-q78: [‘Pouco volume de conteúdo’,‘Faltou mostrar melhor o estande’,‘Faltou mostrar melhor o time’,‘Faltou explicar a estratégia’,‘Faltou mostrar conversas e relacionamento’,‘Faltou mostrar o copinho / QR code / ativações’,‘Faltou chamada para landing page’,‘Faltou conteúdo com autoridade e posicionamento’,‘Faltou bastidor’,‘Faltou conteúdo pós-evento’,‘Não identifiquei ponto fraco’,‘Não consegui avaliar’],
-q80: [‘Stories durante o evento’,‘Fotos do time’,‘Vídeos do espaço’,‘Mostrar brindes e ativações’,‘Mostrar bastidores’,‘Mostrar relacionamento com parceiros’,‘Repostar conteúdos de terceiros’,‘Usar landing page específica’,‘Mostrar presença institucional’,‘Não identifiquei algo específico’,‘Outro ponto’]
+var RD={
+q2:[‘Comercial’,‘Marketing’,‘TI / Sistemas’,‘Liderança / Coordenação’,‘Apoio operacional’,‘Relacionamento institucional’,‘Administrativo / Suporte’,‘Outro’],
+q3:[‘Preparação antes do evento’,‘Montagem / estruturação’,‘Execução durante o evento’,‘Atendimento / abordagem ao público’,‘Captação / registro de contatos’,‘Pós-evento / follow-up’,‘Participei de mais de uma etapa’],
+q50:[‘Presença institucional forte’,‘Copinho / brinde com QR code’,‘Landing page específica’,‘Time comercial presente’,‘Apoio do marketing no evento’,‘Apoio da TI no evento’,‘Vídeos e telas’,‘Abordagem ativa com parceiros’,‘Padrão visual da marca’,‘Estratégia de relacionamento’,‘Captação digital de contatos’,‘Outro ponto’],
+q51:[‘Faltou preparação’,‘Faltou clareza de estratégia’,‘Faltou clareza de função’,‘Faltou treinamento de pitch’,‘Faltou integração entre áreas’,‘Faltou material visual’,‘Faltou melhor captação’,‘Faltou follow-up planejado’,‘Faltou melhor uso da tecnologia’,‘Faltou melhor operação no espaço’,‘Não percebi gargalo relevante’,‘Não consegui avaliar’],
+q54:[‘Vi bastante conteúdo e consegui formar opinião’,‘Vi alguns conteúdos e tenho percepção parcial’,‘Vi pouco conteúdo e tenho pouca base para avaliar’,‘Só ouvi comentários de terceiros’,‘Não tenho base suficiente para avaliar’],
+q75:[‘Marca protagonista e muito forte’,‘Marca forte e bem posicionada’,‘Marca presente, mas com espaço para aparecer mais’,‘Marca discreta demais’,‘Marca abaixo do potencial’,‘Não consegui avaliar’],
+q76:[‘Muito acima dos demais’,‘Acima da média’,‘Na média’,‘Abaixo do esperado’,‘Muito abaixo do potencial’,‘Não vi outros players o suficiente para comparar’,‘Não consegui avaliar’],
+q77:[‘Qualidade dos stories’,‘Quantidade de publicações’,‘Visual do estande’,‘Presença da equipe’,‘Copinho / QR code / brinde’,‘Landing page’,‘Vídeos e telas’,‘Comentários de colaboradores’,‘Comentários de parceiros ou corretores’,‘Publicações de terceiros’,‘Não vi conteúdo suficiente para formar opinião’],
+q78:[‘Pouco volume de conteúdo’,‘Faltou mostrar melhor o estande’,‘Faltou mostrar melhor o time’,‘Faltou explicar a estratégia’,‘Faltou mostrar conversas e relacionamento’,‘Faltou mostrar o copinho / QR code / ativações’,‘Faltou chamada para landing page’,‘Faltou conteúdo com autoridade e posicionamento’,‘Faltou bastidor’,‘Faltou conteúdo pós-evento’,‘Não identifiquei ponto fraco’,‘Não consegui avaliar’],
+q80:[‘Stories durante o evento’,‘Fotos do time’,‘Vídeos do espaço’,‘Mostrar brindes e ativações’,‘Mostrar bastidores’,‘Mostrar relacionamento com parceiros’,‘Repostar conteúdos de terceiros’,‘Usar landing page específica’,‘Mostrar presença institucional’,‘Não identifiquei algo específico’,‘Outro ponto’]
 };
-var MULTI_DEFS = {
-q49: {opts:[‘Preparação antecipada’,‘Clareza de responsabilidades’,‘Treinamento de pitch’,‘Alinhamento entre Comercial, Marketing, TI e liderança’,‘Qualidade do estande’,‘Ativação com brinde / copinho / QR code’,‘Landing page’,‘Captação e registro de leads’,‘Follow-up pós-evento’,‘Materiais visuais / vídeos / telas’,‘Postura institucional da equipe’,‘Organização operacional’,‘Comunicação interna durante o evento’,‘Comunicação online / redes sociais’,‘Registro de fotos e vídeos’,‘Outro ponto’], max:3},
-q53: {opts:[‘Instagram da Residere’,‘Instagram de parceiros / imobiliárias / corretores’,‘Stories ou publicações de colaboradores’,‘Grupo interno da empresa’,‘Fotos e vídeos enviados internamente’,‘Comentários de colegas’,‘Landing page / QR code / material digital’,‘Não acompanhei o suficiente para avaliar’], max:0},
-q79: {opts:[‘Planejamento de conteúdo antes do evento’,‘Stories em tempo real’,‘Fotos profissionais’,‘Vídeos curtos de bastidores’,‘Depoimentos de corretores ou parceiros’,‘Mostrar melhor o estande’,‘Mostrar melhor as ativações’,‘Explicar melhor o objetivo estratégico’,‘Chamada para landing page’,‘Conteúdo pós-evento’,‘Integração entre Marketing e Comercial’,‘Registro de conversas e movimentação’,‘Outro ponto’], max:3}
+var MD={
+q49:{max:3,opts:[‘Preparação antecipada’,‘Clareza de responsabilidades’,‘Treinamento de pitch’,‘Alinhamento entre Comercial, Marketing, TI e liderança’,‘Qualidade do estande’,‘Ativação com brinde / copinho / QR code’,‘Landing page’,‘Captação e registro de leads’,‘Follow-up pós-evento’,‘Materiais visuais / vídeos / telas’,‘Postura institucional da equipe’,‘Organização operacional’,‘Comunicação interna durante o evento’,‘Comunicação online / redes sociais’,‘Registro de fotos e vídeos’,‘Outro ponto’]},
+q53:{max:0,opts:[‘Instagram da Residere’,‘Instagram de parceiros / imobiliárias / corretores’,‘Stories ou publicações de colaboradores’,‘Grupo interno da empresa’,‘Fotos e vídeos enviados internamente’,‘Comentários de colegas’,‘Landing page / QR code / material digital’,‘Não acompanhei o suficiente para avaliar’]},
+q79:{max:3,opts:[‘Planejamento de conteúdo antes do evento’,‘Stories em tempo real’,‘Fotos profissionais’,‘Vídeos curtos de bastidores’,‘Depoimentos de corretores ou parceiros’,‘Mostrar melhor o estande’,‘Mostrar melhor as ativações’,‘Explicar melhor o objetivo estratégico’,‘Chamada para landing page’,‘Conteúdo pós-evento’,‘Integração entre Marketing e Comercial’,‘Registro de conversas e movimentação’,‘Outro ponto’]}
 };
-var STAR_DEFS = {
-‘g1-prep’:  [[4,‘Qual foi a clareza do objetivo estratégico da Residere para o evento?’],[5,‘Qual foi a qualidade das orientações recebidas antes do evento?’],[6,‘O tempo de preparação foi suficiente para o time atuar com segurança?’],[7,‘As responsabilidades de cada área ficaram claras?’],[8,‘Comercial, Marketing, TI e liderança estavam bem alinhados entre si?’],[9,‘O time chegou sabendo o que deveria comunicar, mostrar, captar e registrar?’]],
-‘g1-strat’: [[10,‘A estratégia estava adequada ao público presente no evento?’],[11,‘A presença da Residere transmitiu autoridade, estrutura e confiança?’],[12,‘A estratégia reforçou que a Residere fortalece corretores e imobiliárias, sem atravessar parceiros?’],[13,‘A Residere se posicionou bem em comparação com outros expositores e players presentes?’],[14,‘A Residere saiu maior na percepção do mercado do que entrou?’],[15,‘A estratégia foi coerente com a imagem premium, organizada e segura que a Residere precisa transmitir?’]],
-‘g1-stand’: [[16,‘Qual foi a qualidade visual do estande ou espaço da Residere?’],[17,‘A localização e visibilidade da Residere no evento foram boas?’],[18,‘O espaço estava organizado, funcional e fácil de operar?’],[19,‘O estande ajudava a iniciar conversas com corretores, imobiliárias e parceiros?’],[20,‘As telas, vídeos ou materiais visuais reforçaram bem a percepção da Residere?’],[21,‘O conjunto visual parecia superior, organizado e compatível com uma empresa de alto padrão?’]],
-‘g1-tech’:  [[22,‘O copinho com QR code funcionou como ativação de marca e ponto de contato?’],[23,‘O QR code estava claro, acessível e fazia sentido na jornada do participante?’],[24,‘A landing page estava clara, objetiva e aderente ao evento?’],[25,‘A landing page comunicava bem a proposta da Residere para corretores, imobiliárias e parceiros?’],[26,‘O acesso via QR code e a experiência digital funcionaram sem atrito?’],[27,‘A tecnologia usada reforçou a imagem de empresa moderna, organizada e preparada?’]],
-‘g1-pitch’: [[28,‘O pitch da Residere estava claro e fácil de entender?’],[29,‘O time comercial demonstrou segurança ao explicar a Residere?’],[30,‘O time conseguiu explicar bem o benefício da Residere para corretores e imobiliárias?’],[31,‘O time conseguiu transformar conversas em próximos passos concretos?’],[32,‘A postura da equipe transmitiu maturidade, organização e autoridade institucional?’],[33,‘A equipe soube lidar bem com dúvidas, objeções ou possíveis ruídos de mercado?’],[34,‘A abordagem comercial parecia consultiva, estratégica e adequada ao público?’]],
-‘g1-ops’:   [[35,‘A operação geral do evento pela Residere foi bem coordenada?’],[36,‘A comunicação interna durante o evento foi eficiente?’],[37,‘Os problemas ou imprevistos foram resolvidos com velocidade e maturidade?’],[38,‘A divisão de tarefas evitou confusão, sobreposição ou pessoas sem função clara?’],[39,‘O evento teve bom aproveitamento do tempo da equipe envolvida?’],[40,‘A equipe agiu com postura compatível com a cultura e padrão da Residere?’]],
-‘g1-res’:   [[41,‘A captação de contatos ou leads foi bem organizada?’],[42,‘Os dados coletados parecem suficientes para gerar follow-up de qualidade?’],[43,‘Qual foi a qualidade das conversas geradas no evento?’],[44,‘Qual foi o potencial comercial dos contatos gerados?’],[45,‘Qual foi o potencial institucional e relacional do evento para a Residere?’],[46,‘O evento justificou o investimento de tempo, equipe, energia e exposição da marca?’],[47,‘A participação gerou ativos úteis para o pós-evento (contatos, conteúdo, reputação)?’],[48,‘NOTA GERAL — participação presencial da Residere no evento’,true]],
-‘g2-clar’:  [[55,‘Ficou claro para você que a Residere estava participando do evento?’],[56,‘Ficou claro qual era o objetivo da Residere no evento?’],[57,‘Os conteúdos mostraram a importância estratégica do evento para a Residere?’],[58,‘A comunicação online ajudou você a entender o posicionamento da Residere no evento?’]],
-‘g2-brand’: [[59,‘A presença online da Residere transmitiu força, organização e relevância?’],[60,‘Os conteúdos publicados deram a percepção de que a Residere estava bem posicionada?’],[61,‘A comunicação online reforçou a imagem da Residere como empresa estruturada, segura e de alto padrão?’],[62,‘A cobertura online gerou orgulho interno ou percepção positiva sobre a marca?’],[63,‘A Residere pareceu protagonista ou relevante dentro do evento a partir do que você viu online?’]],
-‘g2-cont’:  [[64,‘Stories, fotos, vídeos ou registros mostraram bem o estande, o time, as ativações e a movimentação?’],[65,‘Os conteúdos publicados foram suficientes para entender a participação da Residere?’],[66,‘A cobertura online mostrou bem o copinho, QR code, landing page ou ativações?’],[67,‘A cobertura online mostrou bem o time da Residere em ação?’],[68,‘A cobertura online mostrou relacionamento com corretores, imobiliárias e parceiros?’],[69,‘Os conteúdos tiveram qualidade visual compatível com o padrão da Residere?’]],
-‘g2-comm’:  [[70,‘A comunicação online deixou claro o benefício da Residere para corretores e imobiliárias?’],[71,‘A presença online transmitiu que a Residere fortalece parceiros e não atravessa o canal imobiliário?’],[72,‘A comunicação online foi bem aproveitada comercialmente?’],[73,‘A participação no evento foi transformada em ativo de marca para depois do evento?’],[74,‘O conteúdo gerado teria capacidade de atrair novos parceiros, corretores ou imobiliárias?’]],
-‘g2-res’:   [[81,‘A comunicação online fez o evento parecer relevante para a Residere?’],[82,‘A comunicação online fez a Residere parecer relevante para o mercado imobiliário?’],[83,‘A comunicação online gerou percepção de que a Residere estava bem preparada?’],[84,‘A comunicação online justificou a presença da Residere no evento?’],[85,‘NOTA GERAL — percepção online da Residere no evento’,true]]
+var SD={
+‘g1-prep’:[[4,‘Qual foi a clareza do objetivo estratégico da Residere para o evento?’],[5,‘Qual foi a qualidade das orientações recebidas antes do evento?’],[6,‘O tempo de preparação foi suficiente para o time atuar com segurança?’],[7,‘As responsabilidades de cada área ficaram claras?’],[8,‘Comercial, Marketing, TI e liderança estavam bem alinhados entre si?’],[9,‘O time chegou sabendo o que deveria comunicar, mostrar, captar e registrar?’]],
+‘g1-strat’:[[10,‘A estratégia estava adequada ao público presente no evento?’],[11,‘A presença da Residere transmitiu autoridade, estrutura e confiança?’],[12,‘A estratégia reforçou que a Residere fortalece corretores e imobiliárias, sem atravessar parceiros?’],[13,‘A Residere se posicionou bem em comparação com outros expositores e players presentes?’],[14,‘A Residere saiu maior na percepção do mercado do que entrou?’],[15,‘A estratégia foi coerente com a imagem premium, organizada e segura que a Residere precisa transmitir?’]],
+‘g1-stand’:[[16,‘Qual foi a qualidade visual do estande ou espaço da Residere?’],[17,‘A localização e visibilidade da Residere no evento foram boas?’],[18,‘O espaço estava organizado, funcional e fácil de operar?’],[19,‘O estande ajudava a iniciar conversas com corretores, imobiliárias e parceiros?’],[20,‘As telas, vídeos ou materiais visuais reforçaram bem a percepção da Residere?’],[21,‘O conjunto visual parecia superior, organizado e compatível com uma empresa de alto padrão?’]],
+‘g1-tech’:[[22,‘O copinho com QR code funcionou como ativação de marca e ponto de contato?’],[23,‘O QR code estava claro, acessível e fazia sentido na jornada do participante?’],[24,‘A landing page estava clara, objetiva e aderente ao evento?’],[25,‘A landing page comunicava bem a proposta da Residere para corretores, imobiliárias e parceiros?’],[26,‘O acesso via QR code e a experiência digital funcionaram sem atrito?’],[27,‘A tecnologia usada reforçou a imagem de empresa moderna, organizada e preparada?’]],
+‘g1-pitch’:[[28,‘O pitch da Residere estava claro e fácil de entender?’],[29,‘O time comercial demonstrou segurança ao explicar a Residere?’],[30,‘O time conseguiu explicar bem o benefício da Residere para corretores e imobiliárias?’],[31,‘O time conseguiu transformar conversas em próximos passos concretos?’],[32,‘A postura da equipe transmitiu maturidade, organização e autoridade institucional?’],[33,‘A equipe soube lidar bem com dúvidas, objeções ou possíveis ruídos de mercado?’],[34,‘A abordagem comercial parecia consultiva, estratégica e adequada ao público?’]],
+‘g1-ops’:[[35,‘A operação geral do evento pela Residere foi bem coordenada?’],[36,‘A comunicação interna durante o evento foi eficiente?’],[37,‘Os problemas ou imprevistos foram resolvidos com velocidade e maturidade?’],[38,‘A divisão de tarefas evitou confusão, sobreposição ou pessoas sem função clara?’],[39,‘O evento teve bom aproveitamento do tempo da equipe envolvida?’],[40,‘A equipe agiu com postura compatível com a cultura e padrão da Residere?’]],
+‘g1-res’:[[41,‘A captação de contatos ou leads foi bem organizada?’],[42,‘Os dados coletados parecem suficientes para gerar follow-up de qualidade?’],[43,‘Qual foi a qualidade das conversas geradas no evento?’],[44,‘Qual foi o potencial comercial dos contatos gerados?’],[45,‘Qual foi o potencial institucional e relacional do evento para a Residere?’],[46,‘O evento justificou o investimento de tempo, equipe, energia e exposição da marca?’],[47,‘A participação gerou ativos úteis para o pós-evento (contatos, conteúdo, reputação)?’],[48,‘NOTA GERAL — participação presencial da Residere no evento’,true]],
+‘g2-clar’:[[55,‘Ficou claro para você que a Residere estava participando do evento?’],[56,‘Ficou claro qual era o objetivo da Residere no evento?’],[57,‘Os conteúdos mostraram a importância estratégica do evento para a Residere?’],[58,‘A comunicação online ajudou você a entender o posicionamento da Residere no evento?’]],
+‘g2-brand’:[[59,‘A presença online da Residere transmitiu força, organização e relevância?’],[60,‘Os conteúdos publicados deram a percepção de que a Residere estava bem posicionada?’],[61,‘A comunicação online reforçou a imagem da Residere como empresa estruturada, segura e de alto padrão?’],[62,‘A cobertura online gerou orgulho interno ou percepção positiva sobre a marca?’],[63,‘A Residere pareceu protagonista ou relevante dentro do evento a partir do que você viu online?’]],
+‘g2-cont’:[[64,‘Stories, fotos, vídeos ou registros mostraram bem o estande, o time, as ativações e a movimentação?’],[65,‘Os conteúdos publicados foram suficientes para entender a participação da Residere?’],[66,‘A cobertura online mostrou bem o copinho, QR code, landing page ou ativações?’],[67,‘A cobertura online mostrou bem o time da Residere em ação?’],[68,‘A cobertura online mostrou relacionamento com corretores, imobiliárias e parceiros?’],[69,‘Os conteúdos tiveram qualidade visual compatível com o padrão da Residere?’]],
+‘g2-comm’:[[70,‘A comunicação online deixou claro o benefício da Residere para corretores e imobiliárias?’],[71,‘A presença online transmitiu que a Residere fortalece parceiros e não atravessa o canal imobiliário?’],[72,‘A comunicação online foi bem aproveitada comercialmente?’],[73,‘A participação no evento foi transformada em ativo de marca para depois do evento?’],[74,‘O conteúdo gerado teria capacidade de atrair novos parceiros, corretores ou imobiliárias?’]],
+‘g2-res’:[[81,‘A comunicação online fez o evento parecer relevante para a Residere?’],[82,‘A comunicação online fez a Residere parecer relevante para o mercado imobiliário?’],[83,‘A comunicação online gerou percepção de que a Residere estava bem preparada?’],[84,‘A comunicação online justificou a presença da Residere no evento?’],[85,‘NOTA GERAL — percepção online da Residere no evento’,true]]
 };
 
-function buildRadio(elId, qk) {
-var el = document.getElementById(elId);
-if (!el) return;
-el.innerHTML = ‘’;
-RADIO_DEFS[qk].forEach(function(opt) {
-var d = document.createElement(‘div’);
-d.className = ‘opt’;
-d.innerHTML = ‘<div class="dot"></div><span>’ + opt + ‘</span>’;
-d.addEventListener(‘click’, function() {
-el.querySelectorAll(’.opt’).forEach(function(x) { x.classList.remove(‘sel’); });
-d.classList.add(‘sel’);
-ans[qk] = opt;
-});
+function bRad(id,qk){
+var el=document.getElementById(id);if(!el)return;
+el.innerHTML=’’;
+RD[qk].forEach(function(o){
+var d=document.createElement(‘div’);d.className=‘opt’;
+d.innerHTML=’<div class="dot"></div><span>’+o+’</span>’;
+d.onclick=function(){el.querySelectorAll(’.opt’).forEach(function(x){x.classList.remove(‘sel’)});d.classList.add(‘sel’);ans[qk]=o};
 el.appendChild(d);
 });
 }
 
-function buildMulti(elId, qk) {
-var el = document.getElementById(elId);
-if (!el) return;
-var def = MULTI_DEFS[qk];
-el.innerHTML = ‘’;
-def.opts.forEach(function(opt) {
-var d = document.createElement(‘div’);
-d.className = ‘opt’;
-d.innerHTML = ‘<div class="ck"></div><span>’ + opt + ‘</span>’;
-d.addEventListener(‘click’, function() {
-var isSel = d.classList.contains(‘sel’);
-if (!isSel) {
-var cur = el.querySelectorAll(’.opt.sel’).length;
-if (def.max > 0 && cur >= def.max) return;
-d.classList.add(‘sel’);
-d.querySelector(’.ck’).textContent = ‘✓’;
-} else {
-d.classList.remove(‘sel’);
-d.querySelector(’.ck’).textContent = ‘’;
-}
-ans[qk] = Array.from(el.querySelectorAll(’.opt.sel’)).map(function(x) { return x.querySelector(‘span’).textContent; });
-});
+function bMul(id,qk){
+var el=document.getElementById(id);if(!el)return;
+var def=MD[qk];el.innerHTML=’’;
+def.opts.forEach(function(o){
+var d=document.createElement(‘div’);d.className=‘opt’;
+d.innerHTML=’<div class="ck"></div><span>’+o+’</span>’;
+d.onclick=function(){
+var s=d.classList.contains(‘sel’);
+if(!s){var c=el.querySelectorAll(’.opt.sel’).length;if(def.max>0&&c>=def.max)return;d.classList.add(‘sel’);d.querySelector(’.ck’).textContent=‘✓’;}
+else{d.classList.remove(‘sel’);d.querySelector(’.ck’).textContent=’’;}
+ans[qk]=Array.from(el.querySelectorAll(’.opt.sel’)).map(function(x){return x.querySelector(‘span’).textContent});
+};
 el.appendChild(d);
 });
 }
 
-function buildStars(containerId, pairs) {
-var el = document.getElementById(containerId);
-if (!el) return;
-el.innerHTML = ‘’;
-pairs.forEach(function(p) {
-var num = p[0], label = p[1], noNA = p[2];
-var qk = ‘q’ + num;
-var box = document.createElement(‘div’);
-box.className = ‘qbox’;
-var lbl = document.createElement(‘div’);
-lbl.className = ‘qlabel’;
-lbl.innerHTML = ‘<b>Q’ + num + ‘.</b>’ + label;
-box.appendChild(lbl);
-var row = document.createElement(‘div’);
-row.className = ‘star-row’;
-var starEls = [];
-var valLbl = document.createElement(‘span’);
-valLbl.className = ‘star-val’;
-for (var i = 1; i <= 10; i++) {
-(function(v) {
-var s = document.createElement(‘span’);
-s.className = ‘star’;
-s.textContent = ‘★’;
-s.addEventListener(‘click’, function() {
-ans[qk] = v;
-starEls.forEach(function(st, idx) { st.classList.toggle(‘on’, idx < v); });
-valLbl.textContent = v + ‘/10’;
-if (naBtn) naBtn.classList.remove(‘sel’);
-});
-starEls.push(s);
-row.appendChild(s);
+function bStar(cid,pairs){
+var el=document.getElementById(cid);if(!el)return;
+el.innerHTML=’’;
+pairs.forEach(function(p){
+var num=p[0],lbl=p[1],noNA=p[2],qk=‘q’+num;
+var box=document.createElement(‘div’);box.className=‘qb’;
+var ql=document.createElement(‘div’);ql.className=‘ql’;ql.innerHTML=’<b>Q’+num+’.</b>’+lbl;
+box.appendChild(ql);
+var row=document.createElement(‘div’);row.className=‘sr’;
+var stars=[],vl=document.createElement(‘span’);vl.className=‘sv’;
+for(var i=1;i<=10;i++){
+(function(v){
+var s=document.createElement(‘span’);s.className=‘star’;s.textContent=‘★’;
+s.onclick=function(){ans[qk]=v;stars.forEach(function(x,i){x.classList.toggle(‘on’,i<v)});vl.textContent=v+’/10’;if(na)na.classList.remove(‘sel’)};
+stars.push(s);row.appendChild(s);
 })(i);
 }
-row.appendChild(valLbl);
-var naBtn = null;
-if (!noNA) {
-naBtn = document.createElement(‘span’);
-naBtn.className = ‘na-lnk’;
-naBtn.textContent = ‘Não avalio’;
-naBtn.addEventListener(‘click’, function() {
-if (naBtn.classList.contains(‘sel’)) {
-naBtn.classList.remove(‘sel’);
-delete ans[qk];
-valLbl.textContent = ‘’;
-} else {
-naBtn.classList.add(‘sel’);
-ans[qk] = ‘N/A’;
-starEls.forEach(function(st) { st.classList.remove(‘on’); });
-valLbl.textContent = ‘N/A’;
-}
-});
-row.appendChild(naBtn);
-}
-box.appendChild(row);
-el.appendChild(box);
+row.appendChild(vl);
+var na=null;
+if(!noNA){na=document.createElement(‘span’);na.className=‘na’;na.textContent=‘Não avalio’;na.onclick=function(){if(na.classList.contains(‘sel’)){na.classList.remove(‘sel’);delete ans[qk];vl.textContent=’’}else{na.classList.add(‘sel’);ans[qk]=‘N/A’;stars.forEach(function(x){x.classList.remove(‘on’)});vl.textContent=‘N/A’}};row.appendChild(na);}
+box.appendChild(row);el.appendChild(box);
 });
 }
 
-function init() {
-Object.keys(RADIO_DEFS).forEach(function(qk) { buildRadio(qk, qk); });
-Object.keys(MULTI_DEFS).forEach(function(qk) { buildMulti(qk, qk); });
-Object.keys(STAR_DEFS).forEach(function(cid) { buildStars(cid, STAR_DEFS[cid]); });
-
-document.getElementById(‘campo-nome’).addEventListener(‘input’, onNome);
-document.getElementById(‘campo-nome’).addEventListener(‘keyup’, onNome);
-document.getElementById(‘gc1’).addEventListener(‘click’, function() { pickGroup(1); });
-document.getElementById(‘gc2’).addEventListener(‘click’, function() { pickGroup(2); });
-document.getElementById(‘btn-start’).addEventListener(‘click’, startForm);
-document.getElementById(‘sub1’).addEventListener(‘click’, enviar);
-document.getElementById(‘sub2’).addEventListener(‘click’, enviar);
+function go(id){
+document.querySelectorAll(’.scr’).forEach(function(s){s.classList.remove(‘on’)});
+document.getElementById(id).classList.add(‘on’);
+window.scrollTo(0,0);
+var g1=[‘s-g1-1’,‘s-g1-2’,‘s-g1-3’,‘s-g1-4’],g2=[‘s-g2-1’,‘s-g2-2’,‘s-g2-3’];
+var list=grupo===1?g1:g2,idx=list.indexOf(id);
+document.getElementById(‘prog’).style.width=(idx<0?0:(idx+1)/list.length*100)+’%’;
 }
 
-function go(id) {
-document.querySelectorAll(’.screen’).forEach(function(s) { s.classList.remove(‘active’); });
-document.getElementById(id).classList.add(‘active’);
-window.scrollTo(0, 0);
-var g1 = [‘s-g1-1’,‘s-g1-2’,‘s-g1-3’,‘s-g1-4’];
-var g2 = [‘s-g2-1’,‘s-g2-2’,‘s-g2-3’];
-var list = grupo === 1 ? g1 : g2;
-var idx = list.indexOf(id);
-document.getElementById(‘prog’).style.width = (idx < 0 ? 0 : (idx+1)/list.length*100) + ‘%’;
+function checkNome(){
+var v=document.getElementById(‘campo-nome’).value.trim();
+document.getElementById(‘bloco-grupo’).style.display=v.length>=2?‘block’:‘none’;
 }
 
-function pickGroup(g) {
-grupo = g;
-document.getElementById(‘gc1’).classList.toggle(‘sel’, g === 1);
-document.getElementById(‘gc2’).classList.toggle(‘sel’, g === 2);
+function init(){
+Object.keys(RD).forEach(function(k){bRad(k,k)});
+Object.keys(MD).forEach(function(k){bMul(k,k)});
+Object.keys(SD).forEach(function(k){bStar(k,SD[k])});
+
+var n=document.getElementById(‘campo-nome’);
+n.addEventListener(‘input’,checkNome);
+n.addEventListener(‘keyup’,checkNome);
+n.addEventListener(‘change’,checkNome);
+n.addEventListener(‘paste’,function(){setTimeout(checkNome,50)});
+
+document.getElementById(‘gc1’).onclick=function(){grupo=1;document.getElementById(‘gc1’).classList.add(‘sel’);document.getElementById(‘gc2’).classList.remove(‘sel’)};
+document.getElementById(‘gc2’).onclick=function(){grupo=2;document.getElementById(‘gc2’).classList.add(‘sel’);document.getElementById(‘gc1’).classList.remove(‘sel’)};
+document.getElementById(‘btn-start’).onclick=function(){
+if(!grupo){alert(‘Selecione seu grupo.’);return;}
+ans={nome:document.getElementById(‘campo-nome’).value.trim(),grupo:grupo===1?‘Grupo 1 - Presencial’:‘Grupo 2 - Online’};
+go(grupo===1?‘s-g1-1’:‘s-g2-1’);
+};
+document.getElementById(‘sub1’).onclick=enviar;
+document.getElementById(‘sub2’).onclick=enviar;
 }
 
-function onNome() {
-var v = document.getElementById(‘campo-nome’).value.trim();
-document.getElementById(‘bloco-grupo’).style.display = v.length >= 2 ? ‘block’ : ‘none’;
+function enviar(){
+ans.q52=document.getElementById(‘q52’)?document.getElementById(‘q52’).value:’’;
+ans.q86=document.getElementById(‘q86’)?document.getElementById(‘q86’).value:’’;
+ans.timestamp=new Date().toLocaleString(‘pt-BR’);
+document.querySelectorAll(’.bsub’).forEach(function(b){b.textContent=‘Enviando…’;b.disabled=true});
+fetch(SHEET,{method:‘POST’,mode:‘no-cors’,headers:{‘Content-Type’:‘application/json’},body:JSON.stringify(ans)}).catch(function(){});
+setTimeout(function(){go(‘s-ok’);document.getElementById(‘prog’).style.width=‘100%’},800);
 }
 
-function validateNome() {
-var v = document.getElementById(‘campo-nome’).value.trim();
-var check = document.getElementById(‘nome-check’);
-var label = document.getElementById(‘nome-label’);
-var erro = document.getElementById(‘nome-erro’);
-if (v.length > 1) {
-check.style.opacity = ‘1’;
-check.style.color = ‘var(–gold)’;
-erro.style.opacity = ‘0’;
-document.getElementById(‘campo-nome’).style.borderColor = ‘var(–gold)’;
-label.style.top = ‘6px’;
-label.style.fontSize = ‘10px’;
-label.style.color = ‘var(–gold)’;
-label.style.textTransform = ‘uppercase’;
-label.style.letterSpacing = ‘0.5px’;
-} else {
-check.style.opacity = ‘0’;
-label.style.top = ‘14px’;
-label.style.fontSize = ‘14px’;
-label.style.color = ‘var(–text-muted)’;
-label.style.textTransform = ‘none’;
-label.style.letterSpacing = ‘0’;
-}
-}
-
-function startForm() {
-if (!grupo) { alert(‘Por favor, selecione seu grupo antes de continuar.’); return; }
-var nome = document.getElementById(‘campo-nome’).value.trim();
-if (!nome) {
-document.getElementById(‘nome-erro’).style.opacity = ‘1’;
-document.getElementById(‘campo-nome’).style.borderColor = ‘#e07070’;
-document.getElementById(‘campo-nome’).focus();
-return;
-}
-ans = { nome: nome, grupo: grupo === 1 ? ‘Grupo 1 - Presencial’ : ‘Grupo 2 - Online’ };
-go(grupo === 1 ? ‘s-g1-1’ : ‘s-g2-1’);
-}
-
-function enviar() {
-var ta52 = document.getElementById(‘q52’);
-var ta86 = document.getElementById(‘q86’);
-if (ta52) ans[‘q52’] = ta52.value;
-if (ta86) ans[‘q86’] = ta86.value;
-ans.timestamp = new Date().toLocaleString(‘pt-BR’);
-document.querySelectorAll(’.btn-sub’).forEach(function(b) { b.textContent = ‘Enviando…’; b.disabled = true; });
-fetch(SHEET, { method: ‘POST’, mode: ‘no-cors’, headers: { ‘Content-Type’: ‘application/json’ }, body: JSON.stringify(ans) }).catch(function() {});
-setTimeout(function() { go(‘s-ok’); document.getElementById(‘prog’).style.width = ‘100%’; }, 800);
-}
-
-window.addEventListener(‘DOMContentLoaded’, init);
+window.addEventListener(‘DOMContentLoaded’,init);
 </script>
 
 </body>
