@@ -322,11 +322,8 @@ Object.keys(RD).forEach(function(k){bRad(k,k)});
 Object.keys(MD).forEach(function(k){bMul(k,k)});
 Object.keys(SD).forEach(function(k){bStar(k,SD[k])});
 
-var n=document.getElementById(‘campo-nome’);
-n.addEventListener(‘input’,checkNome);
-n.addEventListener(‘keyup’,checkNome);
-n.addEventListener(‘change’,checkNome);
-n.addEventListener(‘paste’,function(){setTimeout(checkNome,50)});
+// Poll every 200ms — works on all iOS Safari versions
+setInterval(checkNome, 200);
 
 document.getElementById(‘gc1’).onclick=function(){grupo=1;document.getElementById(‘gc1’).classList.add(‘sel’);document.getElementById(‘gc2’).classList.remove(‘sel’)};
 document.getElementById(‘gc2’).onclick=function(){grupo=2;document.getElementById(‘gc2’).classList.add(‘sel’);document.getElementById(‘gc1’).classList.remove(‘sel’)};
